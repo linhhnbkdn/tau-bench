@@ -3409,4 +3409,47 @@ TASKS_TEST = [
         ],
         outputs=[],
     ),
+    Task(
+        annotator="4",
+        user_id="aarav_brown_3744",
+        instruction="Your name is Briown Aarav and your email is aarav.brown3708@example.com. "
+        "You would like to cancel order #W6584521, and modify the remaining order by replacing the Wristwatch with the same Bicycle from order #W6584521."
+        "You also want to know the total amount you need to pay today.",
+        actions=[
+            Action(
+                name="find_user_id_by_email",
+                kwargs={"email": "aarav.brown3708@example.com."},
+            ),
+            Action(
+                name="get_product_details",
+                kwargs={"product_id": "9783735446"},
+            ),
+            Action(
+                name="cancel_pending_order",
+                kwargs={"order_id": "#W6584521", "reason": "no longer needed"},
+            ),
+            Action(
+                name="modify_pending_order_items",
+                kwargs={
+                    "order_id": "#W6629830",
+                    "item_ids": ["9112290483"],
+                    "new_item_ids": ["7758198585"],
+                    "payment_method_id": "credit_card_3627996",
+                },
+            ),
+            Action(
+                name="get_order_details",
+                kwargs={"order_id": "#W6584521"},
+            ),
+            Action(
+                name="get_order_details",
+                kwargs={"order_id": "#W5065081"},
+            ),
+            Action(
+                name="calculate",
+                kwargs={"expression": "6759.33 - 1917.21 + 1925.16"},
+            ),
+        ],
+        outputs=[],
+    ),
 ]
